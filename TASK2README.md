@@ -1,18 +1,18 @@
-# 🚗 Motor Control with PWM & Obstacle Detection using Arduino Uno
+## Motor Control with PWM & Obstacle Detection using Arduino Uno
 
-## 📖 Project Overview
+## Project Overview
 
 This project demonstrates PWM-based DC motor speed control integrated with obstacle detection using an Arduino Uno. An HC-SR04 ultrasonic sensor continuously measures the distance between the system and nearby objects. The measured distance is processed by the Arduino, which controls the DC motor through an L298N motor driver. When an obstacle is detected within a predefined threshold of **20 cm**, the Arduino immediately stops the motor by setting the PWM value to zero. Once the obstacle is removed, the motor automatically resumes operation at the predefined speed. This project illustrates the practical implementation of PWM motor control, ultrasonic sensing, and real-time embedded system decision-making.
 
 ---
 
-## 📷 Project Simulation
+## Project Simulation
 
 > *(Insert your simulation screenshot here)*
 
 ---
 
-## 🛠️ Hardware Components
+## Hardware Components
 
 - Arduino Uno
 - L298N Motor Driver Module
@@ -23,7 +23,7 @@ This project demonstrates PWM-based DC motor speed control integrated with obsta
 
 ---
 
-## 🔌 Circuit Connections
+## Circuit Connections
 
 ### Arduino Uno → L298N Motor Driver
 
@@ -52,13 +52,13 @@ This project demonstrates PWM-based DC motor speed control integrated with obsta
 
 ---
 
-## ⚙️ Working Principle
+## Working Principle
 
 The HC-SR04 ultrasonic sensor continuously measures the distance to nearby objects using ultrasonic waves. The Arduino calculates the distance from the sensor's echo pulse. If the detected distance is greater than **20 cm**, the Arduino sends a PWM signal (value 180) to the L298N motor driver, allowing the DC motor to rotate at a controlled speed. If an obstacle is detected within **20 cm**, the PWM signal is set to zero, causing the motor to stop immediately. Once the obstacle is removed, the motor resumes operation automatically.
 
 ---
 
-## 💻 Arduino Code
+## Arduino Code
 
 ```cpp
 #define TRIG_PIN 9
@@ -118,7 +118,7 @@ void loop() {
 
 
 
-## 📊 Test Results
+## Test Results
 
 | Distance (cm) | Motor Status |
 |---------------|--------------|
@@ -130,9 +130,13 @@ void loop() {
 | 10 | Stopped |
 | 30 | Running |
 
+## Demonstration
+<img width="1917" height="1016" alt="Screenshot 2026-08-02 190359" src="https://github.com/user-attachments/assets/4da01ca4-a3d8-432a-8ba9-14e5d6293563" />
 
 
-## ✅ Conclusion
+
+
+##  Conclusion
 
 This project successfully demonstrates the integration of PWM-based motor speed control with ultrasonic obstacle detection using Arduino Uno. The system continuously monitors the surroundings and automatically stops the DC motor when an obstacle is detected within the predefined safety distance. The implementation showcases the use of embedded systems, sensor interfacing, motor control, and real-time automation, making it suitable for robotics, autonomous vehicles, and industrial safety applications.
 
