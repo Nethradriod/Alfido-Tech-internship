@@ -58,6 +58,51 @@ This project reads the temperature from a **DS18B20 digital temperature sensor**
         A4 ---+----------------------+ SDA
         A5 ---+----------------------+ SCL
 ```
+## Code
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+#include <OneWire.h>
+#include <DallasTemperature.h>
+
+#define ONE_WIRE_BUS 2
+
+OneWire oneWire(ONE_WIRE_BUS);
+DallasTemperature sensors(&oneWire);
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+void setup() {
+  Serial.begin(9600);
+
+  sensors.begin();
+
+  lcd.init();
+  lcd.backlight();
+
+  lcd.setCursor(0, 0);
+  lcd.print("Temperature");
+}
+
+void loop() {
+
+  sensors.requestTemperatures();
+
+  float temp = sensors.getTempCByIndex(0);
+
+  Serial.print("Temperature: ");
+  Serial.print(temp);
+  Serial.println(" C");
+
+  lcd.setCursor(0, 1);
+  lcd.print("                ");   // Clear line
+
+  lcd.setCursor(0, 1);
+  lcd.print(temp);
+  lcd.print((char)223);
+  lcd.print("C");
+
+  delay(5000);
+}
 
 
 ## Working Principle
@@ -82,6 +127,10 @@ Temperature: 25.50 °C
 Temperature: 25.62 °C
 Temperature: 25.75 °C
 ```
+
+## Demostration
+<img width="1910" height="912" alt="Screenshot 2026-07-26 181050" src="https://github.com/user-attachments/assets/82dab7c7-4148-4506-b667-6834da836e32" />
+
 
 ## Features
 - Real-time temperature monitoring
